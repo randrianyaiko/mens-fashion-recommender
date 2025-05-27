@@ -49,7 +49,7 @@ def display_selected_images():
     if not st.session_state.liked and not st.session_state.disliked:
         return
 
-    st.markdown("### 🎯 🧍 Your Picks")
+    st.markdown("### 🧍 Your Picks")
     cols = st.columns(6)
     i = 0
     for img_id, status in list(st.session_state.liked.items()) + list(st.session_state.disliked.items()):
