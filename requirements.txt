@@ -1,0 +1,6 @@
+qdrant-client
+fastembed
+kagglehub
+streamlit
+python-dotenv
+Pillow
