@@ -1,7 +1,10 @@
 from fastembed import ImageEmbedding
 from typing import List
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-model = ImageEmbedding("Qdrant/resnet50-onnx")
+model = ImageEmbedding(os.getenv("IMAGE_EMBEDDING_MODEL"))
 
 def compute_image_embedding(image_paths: List[str]) -> list[float]:
     """

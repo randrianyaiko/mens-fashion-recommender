@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 kaggle_repo = os.getenv("KAGGLE_REPO")
-path = kagglehub.dataset_download("virat164/fashion-database")
+path = kagglehub.dataset_download(kaggle_repo)
 target_folder = os.getenv("DATA_PATH")
 
 def getData():
