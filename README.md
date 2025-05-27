@@ -8,7 +8,7 @@ An interactive web app that recommends men's fashion styles based on your person
 
 ## 🚀 Live Demo
 
-> Coming soon — deploy using [Streamlit Cloud](https://mens-fashion-recommender.streamlit.app/).
+> The app is available here on [Streamlit Cloud](https://mens-fashion-recommender.streamlit.app/).
 
 ---
 
