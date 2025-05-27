@@ -11,7 +11,7 @@ getData()
 # Initialize components
 recommendation_engine = RecommendationEngine()
 vector_store = VectorStore()
-images = vector_store.points  # This should be a list of dicts with "id" and "image_path"
+images = vector_store.points  # List of dicts with "id" and "image_path"
 
 # -------------- Config --------------
 st.set_page_config(page_title="🧥 Men's Fashion Recommender", layout="wide")
@@ -30,15 +30,49 @@ if "current_page" not in st.session_state:
 if "recommended_images" not in st.session_state:
     st.session_state.recommended_images = images  # Initial fallback
 
+# -------------- Sidebar Info --------------
+with st.sidebar:
+    st.title("🧥 Men's Fashion Recommender")
+    
+    st.markdown("""
+    **Discover fashion styles that suit your taste.**  
+    Like 👍 or dislike 👎 outfits and receive AI-powered recommendations tailored to you.
+    """)
+
+    st.markdown("### 📦 Dataset")
+    st.markdown("""
+    - Source: [Kaggle – virat164/fashion-database](https://www.kaggle.com/datasets/virat164/fashion-database)
+    - Contains about 2,000 images of diverse fashion styles
+    """)
+
+    st.markdown("### 🧠 How It Works")
+    st.markdown("""
+    - Images are encoded into vectors
+    - You like/dislike outfits
+    - Similar images are fetched using vector similarity
+    - Results update in real-time
+    """)
+
+    st.markdown("### ⚙️ Technologies Used")
+    st.markdown("""
+    - **Streamlit** for UI  
+    - **Qdrant** for vector search  
+    - **Python** for logic and preprocessing  
+    - **PIL** for image rendering  
+    - **Kaggle API** for dataset access
+    """)
+
+    st.markdown("---")
+    st.markdown("🔗 [Connect on LinkedIn](https://www.linkedin.com/in/rindra-ny-aiko-randriamihamina/)")
+
 # -------------- Recommendation Logic Integration --------------
 def get_recommendations(liked_ids, disliked_ids):
     return recommendation_engine.get_recommendations(
         liked_images=liked_ids,
         disliked_images=disliked_ids,
-        limit=3*IMAGES_PER_PAGE
+        limit=3 * IMAGES_PER_PAGE
     )
 
-# -------------- Refresh Recommendations --------------
 def refresh_recommendations():
     liked_ids = list(st.session_state.liked.keys())
     disliked_ids = list(st.session_state.disliked.keys())
