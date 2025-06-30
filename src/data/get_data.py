@@ -9,6 +9,18 @@ path = kagglehub.dataset_download(kaggle_repo)
 target_folder = os.getenv("DATA_PATH")
 
 def getData():
+    """
+    Downloads the dataset from Kaggle and copies it to the specified folder.
+
+    The function first checks if the folder already exists. If it does, it will
+    copy the new files and folders into the existing folder. If the folder does
+    not exist, it will create the folder and copy all files and folders from the
+    dataset into it.
+
+    The dataset is downloaded from the Kaggle repository specified in the
+    KAGGLE_REPO environment variable. The folder to copy the dataset to is
+    specified in the DATA_PATH environment variable.
+    """
     if not os.path.exists(target_folder):
         shutil.copytree(path, target_folder)
     else:
